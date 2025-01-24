@@ -13,7 +13,8 @@ class Category(models.Model):
         unique=True,
         db_index=True,
         verbose_name=_("Идентификатор"),
-        help_text=_("Идентификатор страницы для URL.")
+        help_text=_("Идентификатор страницы для URL; разрешены "
+                    "символы латиницы, цифры, дефис и подчёркивание.")
     )
     is_published = models.BooleanField(
         default=True,
@@ -54,7 +55,8 @@ class Post(models.Model):
     text = models.TextField(verbose_name=_("Текст"))
     pub_date = models.DateTimeField(
         verbose_name=_("Дата и время публикации"),
-        help_text=_("Можно делать отложенные публикации.")
+        help_text=_("Если установить дату и время в будущем — "
+                    "можно делать отложенные публикации..")
     )
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name=_("Автор публикации")
@@ -78,7 +80,8 @@ class Post(models.Model):
         max_length=200,
         unique=True,
         verbose_name=_('Идентификатор'),
-        help_text=_('Идентификатор страницы для URL.'),
+        help_text=_("Идентификатор страницы для URL; разрешены "
+                    "символы латиницы, цифры, дефис и подчёркивание."),
         null=True,
         blank=True
     )
