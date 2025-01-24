@@ -8,7 +8,7 @@ def index(request):
         is_published=True,
         category__is_published=True,
         pub_date__lte=now()
-).order_by('-pub_date')[:5]
+    ).order_by('-pub_date')[:5]
     return render(request, 'blog/index.html', {'posts': posts})
 
 
