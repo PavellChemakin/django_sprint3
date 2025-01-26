@@ -1,17 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.utils.timezone import now
 
+from .utils import get_published_posts
 from .models import Post, Category
-
 from blogicum.settings import MAX_POSTS_PER_PAGE
-
-
-def get_published_posts(category=None):
-    return Post.objects.filter(
-        is_published=True,
-        category__is_published=True,
-        pub_date__lte=now(),
-    ).order_by('-pub_date')
 
 
 def index(request):
